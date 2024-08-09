@@ -22,7 +22,7 @@ const Navbar = () => {
         const email = document.getElementById('emaill').value;
         const password = document.getElementById('passwordd').value;
         createUser(email, password)
-            .then(result => {
+            .then(() => {
                 // console.log(result.user)
                 updateUser(name, photo)
                     .then(() => {
@@ -54,7 +54,7 @@ const Navbar = () => {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         login(email, password)
-            .then(result => {
+            .then(() => {
                 // console.log(result.user)
                 Swal.fire({
                     title: 'Success',
@@ -74,7 +74,7 @@ const Navbar = () => {
     }
     const handleGoogle = () => {
         googleLogin()
-            .then(result => {
+            .then(() => {
                 Swal.fire({
                     title: 'Success',
                     text: 'Press the button to continue',
@@ -156,13 +156,13 @@ const Navbar = () => {
                                 <form className="text-center my-8">
                                     <div className="grid grid-cols-4 gap-y-4 items-center">
                                         <span className="font-medium col-span-1">Name: </span>
-                                        <input type="name" id="name" placeholder="Your name" className="input col-span-3 input-bordered" />
+                                        <input type="name" id="name" placeholder="Your name" className="input col-span-3 input-bordered"  required/>
                                         <span className="font-medium col-span-1">Photo: </span>
-                                        <input type="name" id="photo" placeholder="Your photo URL" className="input col-span-3 input-bordered" />
+                                        <input type="name" id="photo" placeholder="Your photo URL" className="input col-span-3 input-bordered" required/>
                                         <span className="font-medium col-span-1">Email: </span>
-                                        <input type="email" id="emaill" placeholder="Your email" className="input col-span-3 input-bordered" />
+                                        <input type="email" id="emaill" placeholder="Your email" className="input col-span-3 input-bordered" required/>
                                         <span className="font-medium">Password: </span>
-                                        <input type="password" id="passwordd" placeholder="Your password" className="input col-span-3 input-bordered" />
+                                        <input type="password" id="passwordd" placeholder="Your password" className="input col-span-3 input-bordered" required/>
                                         <input type="submit" onClick={handleSignup} className="btn bg-gray-400 col-span-4 text-white" value="Register" />
                                     </div>
                                 </form>
@@ -180,9 +180,9 @@ const Navbar = () => {
                                 <form className="text-center my-8">
                                     <div className="grid grid-cols-4 gap-y-4 items-center">
                                         <span className="font-medium col-span-1">Email: </span>
-                                        <input type="email" id="email" placeholder="Your email" className="input col-span-3 input-bordered" />
+                                        <input type="email" id="email" placeholder="Your email" className="input col-span-3 input-bordered" required/>
                                         <span className="font-medium">Password: </span>
-                                        <input type="password" id="password" placeholder="Your password" className="input col-span-3 input-bordered" />
+                                        <input type="password" id="password" placeholder="Your password" className="input col-span-3 input-bordered" required/>
                                         <input type="submit" onClick={handleLogin} className="btn bg-gray-400 col-span-4 text-white" value="Login" />
                                     </div>
                                 </form>
