@@ -108,14 +108,14 @@ const MyBookings = () => {
                 <title>Hotel Link || My Bookings</title>
             </Helmet>
             <h3 className="text-center text-3xl font-bold mt-12">My Bookings</h3>
-            <div className="flex items-center justify-end">
+            <div className="lg:flex items-center justify-end hidden">
                 <button onClick={()=>setClick(true)} className="btn btn-ghost text-gray-500 text-2xl"><FaBars /></button>
                 <button onClick={()=>setClick(false)} className="btn btn-ghost text-gray-500 text-3xl"><BiSolidGrid /></button>
             </div>
-            <div className={click ? "grid gap-y-7 mt-5 min-h-44" : 'grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-9 mt-8 gap-x-16'}>
+            <div className={click ? "grid gap-y-7 mt-5 min-h-44 lg:mx-3 mx-auto" : 'grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3  lg:mx-3 mx-auto gap-y-9 mt-8 gap-x-16'}>
                 {
                     bookings.map(booking =>
-                        <div className={click ? 'border rounded-2xl p-4 lg:flex items-center' : 'border rounded-2xl p-4 grid items-center'} key={booking._id}>
+                        <div className={click ? 'border rounded-2xl lg:w-full lg:ml-0 w-[92.5%] p-4 lg:flex items-center' : 'border rounded-2xl  p-4 grid items-center'} key={booking._id}>
                             <div className={click ? "lg:w-1/3" : 'lg:w-full'}>
                                 <img className="w-full md:h-[210px]" src={booking.room_image} alt="" />
                             </div>

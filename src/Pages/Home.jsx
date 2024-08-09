@@ -32,7 +32,7 @@ const Home = () => {
                     <a href='#rooms' className='px-7 btn btn-outline text-white border-white rounded-full'>Explore more <IoMdArrowRoundForward className='text-white text-lg' /></a>
                 </div>
             </div>
-            <div id='rooms' className='mb-12 z-50 mx-6'>
+            <div id='rooms' className='mb-12 z-50 mx-auto lg:mx-6'>
                 <h3 className='text-center text-3xl font-semibold mb-3'>Featured Rooms</h3>
                 <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-9 xl:gap-x-16 my-8'>
                     {
@@ -45,7 +45,7 @@ const Home = () => {
             </div>
             <div className='mb-12'>
                 <h3 className='text-center text-3xl my-8 font-bold'>User Reviews</h3>
-                <div className='border-2 mx-6 rounded-2xl p-4'>
+                <div className='border-2 mx-3 lg:mx-6 rounded-2xl p-4'>
                     {
                     reviews.slice(0,12).map(review =>
                         <div key={review._id} className="chat chat-start mt-3">
