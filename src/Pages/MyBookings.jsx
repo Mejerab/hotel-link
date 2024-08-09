@@ -6,9 +6,12 @@ import { toast, ToastContainer } from "react-toastify";
 import Swal from "sweetalert2";
 import moment from "moment";
 import { Helmet } from "react-helmet";
+import { BiSolidGrid } from "react-icons/bi";
+import { FaBars } from "react-icons/fa";
 
 const MyBookings = () => {
     const { user } = useContext(AuthContext);
+    const [click, setClick] = useState(true)
     const [day, setDay] = useState(null);
     const [month, setMonth] = useState(null);
     const [year, setYear] = useState(null);
@@ -104,11 +107,15 @@ const MyBookings = () => {
                 <title>Hotel Link || My Bookings</title>
             </Helmet>
             <h3 className="text-center text-3xl font-bold mt-12">My Bookings</h3>
-            <div className="grid gap-y-7 mt-5 min-h-44">
+            <div className="flex items-center justify-end">
+                <button onClick={()=>setClick(true)} className="btn btn-ghost text-gray-500 text-2xl"><FaBars /></button>
+                <button onClick={()=>setClick(false)} className="btn btn-ghost text-gray-500 text-3xl"><BiSolidGrid /></button>
+            </div>
+            <div className={click ? "grid gap-y-7 mt-5 min-h-44" : 'grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-9 mt-8 gap-x-16'}>
                 {
                     bookings.map(booking =>
-                        <div className="border rounded-2xl p-4 lg:flex items-center" key={booking._id}>
-                            <div className="lg:w-1/3">
+                        <div className={click ? 'border rounded-2xl p-4 lg:flex items-center' : 'border rounded-2xl p-4 grid items-cente'} key={booking._id}>
+                            <div className={click ? "lg:w-1/3" : 'lg:w-5/6'}>
                                 <img className="w-full md:h-[210px]" src={booking.room_image} alt="" />
                             </div>
                             <div className="lg:w-2/3 lg:ml-5 lg:mt-0 mt-5">
