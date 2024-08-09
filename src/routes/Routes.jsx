@@ -20,7 +20,7 @@ const router = createBrowserRouter([
             {
                 path: '/details/:id',
                 element: <PrivateRoute><Detail></Detail></PrivateRoute>,
-                loader: ({params})=>fetch(`http://localhost:5000/rooms/${params.id}`)
+                loader: ({params})=>fetch(`https://hotel-server-site.vercel.app/rooms/${params.id}`)
             },
             {
                 path: '/rooms',
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
             {
                 path: '/aboutus',
                 element: <Aboutus></Aboutus>,
-                loader: ()=>fetch('http://localhost:5000/messages')
+                loader: ()=>fetch('https://hotel-server-site.vercel.app/messages')
             },
             {
                 path: '/contactus',

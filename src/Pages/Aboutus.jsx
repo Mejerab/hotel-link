@@ -26,7 +26,7 @@ const Aboutus = () => {
             container.appendChild(chat);
             const nothing = { message, time: moment().fromNow() };
             console.log(nothing);
-            axios.post('http://localhost:5000/messages', nothing, { withCredentials: true })
+            axios.post('https://hotel-server-site.vercel.app/messages', nothing, { withCredentials: true })
                 .then(data => console.log(data.data))
         }
         else{

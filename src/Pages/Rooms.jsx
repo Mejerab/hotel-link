@@ -18,7 +18,7 @@ const Rooms = () => {
     const [condition, setCondition] = useState('mixed');
     const itemsPerPage = 6;
     useEffect(() => {
-        axios(`http://localhost:5000/rooms?page=${currentPage}&size=${itemsPerPage}&condition=${condition}`, { withCredentials: true })
+        axios(`https://hotel-server-site.vercel.app/rooms?page=${currentPage}&size=${itemsPerPage}&condition=${condition}`, { withCredentials: true })
             .then(res => setRooms(res.data))
     }, [currentPage, condition])
     const handlePrev = () => {

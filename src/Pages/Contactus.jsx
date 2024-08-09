@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { FaQuestion } from "react-icons/fa";
 import { Map, Marker } from "pigeon-maps";
 import { Helmet } from "react-helmet";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const Contactus = () => {
     const { user } = useContext(AuthContext);
@@ -20,7 +20,7 @@ const Contactus = () => {
             })
             message.value = '';
         }
-        else{
+        else {
             toast.error('You may login first')
         }
     }
@@ -127,6 +127,7 @@ const Contactus = () => {
                     </Map>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
