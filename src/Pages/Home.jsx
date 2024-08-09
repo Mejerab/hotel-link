@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { IoPersonCircleSharp } from 'react-icons/io5';
 import { Helmet } from 'react-helmet';
 import { AuthContext } from '../provider/AuthProvider';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Home = () => {
     const { user } = useContext(AuthContext);
@@ -104,6 +104,7 @@ const Home = () => {
                     </Map>
                 </div>
             </div>
+            <ToastContainer />
         </>
     );
 };

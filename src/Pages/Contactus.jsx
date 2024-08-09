@@ -42,7 +42,7 @@ const Contactus = () => {
                                 <label className="label">
                                     <span className="label-text font-medium">Name</span>
                                 </label>
-                                <input type="name" name="name" placeholder="name" className="input input-bordered" defaultValue={user.displayName} required />
+                                <input type="name" name="name" placeholder="name" className="input input-bordered" defaultValue={user?.displayName} required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
