@@ -8,3 +8,5 @@
 *User Accounts and Personalized Experience: Allow users to create accounts where they can save their favorite hotels, track their booking history.
 
 *Contact Us: Users are able to connect with us by sending us a message or email, phone, facebook, instagram. User can also visit our office.
+
+*Review Mechanism for Hotels: Allow hotels to provide review on user reviews and interactions. This can help maintain a good relationship with hotel partners and improve the accuracy of information.

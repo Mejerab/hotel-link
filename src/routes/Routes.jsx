@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Main/Main";
 import Home from "../Pages/Home";
 import Detail from "../Pages/Detail";
-import Register from "../Users/Register";
 import Rooms from "../Pages/Rooms";
 import Aboutus from "../Pages/Aboutus";
 import PrivateRoute from "./PrivateRoute";
@@ -22,10 +21,6 @@ const router = createBrowserRouter([
                 path: '/details/:id',
                 element: <PrivateRoute><Detail></Detail></PrivateRoute>,
                 loader: ({params})=>fetch(`http://localhost:5000/rooms/${params.id}`)
-            },
-            {
-                path: '/register',
-                element: <Register></Register>
             },
             {
                 path: '/rooms',
