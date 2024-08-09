@@ -1,14 +1,17 @@
 import { IoMdArrowRoundForward } from 'react-icons/io';
 import './Home.css'
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import Popular from './Popular';
 import { Map, Marker } from 'pigeon-maps';
 import { Link } from 'react-router-dom';
 import { IoPersonCircleSharp } from 'react-icons/io5';
 import { Helmet } from 'react-helmet';
+import { AuthContext } from '../provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Home = () => {
+    const { user } = useContext(AuthContext);
     const [populars, setPopulars] = useState([]);
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
@@ -19,12 +22,22 @@ const Home = () => {
     }, [])
     const [hue, setHue] = useState(0);
     const color = `hsl(${hue % 360}deg 39% 70%)`;
-
+    const handleSubmit = e => {
+        e.preventDefault();
+        const email = e.target.email;
+        if (email.value) {
+            toast.success('Subscribed successfully');
+            email.value = ''
+        }
+        else{
+            toast.error('You may login first')
+        }
+    }
     return (
         <>
-        <Helmet>
-            <title>Hotel Link || Home</title>
-        </Helmet>
+            <Helmet>
+                <title>Hotel Link || Home</title>
+            </Helmet>
             <div className="banner bg-[url(https://imageio.forbes.com/specials-images/imageserve/63fe2d74e3f606d11f07b7f7/terrace-on-lake/960x0.jpg?height=474&width=711&fit=bounds)] bg-cover py-52 bg-center relative -top-[4.04rem] z-10">
                 <div className='relative z-30 text-center '>
                     <h2 className='text-5xl text-white font-semibold'>Welcome to Hotel Link</h2>
@@ -47,22 +60,22 @@ const Home = () => {
                 <h3 className='text-center text-3xl my-8 font-bold'>User Reviews</h3>
                 <div className='border-2 mx-3 lg:mx-6 rounded-2xl p-4'>
                     {
-                    reviews.slice(0,12).map(review =>
-                        <div key={review._id} className="chat chat-start mt-3">
-                            <div className="chat-image avatar">
-                                <div className="w-10 rounded-full">
-                                    {review.photo ? <img className="bg-base-200 p-1" src={review.photo} alt="" /> : <IoPersonCircleSharp className="pr-2 text-5xl" />}
+                        reviews.slice(0, 12).map(review =>
+                            <div key={review._id} className="chat chat-start mt-3">
+                                <div className="chat-image avatar">
+                                    <div className="w-10 rounded-full">
+                                        {review.photo ? <img className="bg-base-200 p-1" src={review.photo} alt="" /> : <IoPersonCircleSharp className="pr-2 text-5xl" />}
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="chat chat-start">
-                                <div className="chat-header justify-between">
-                                    {review.user}
-                                    <time className="ml-7 text-sm opacity-50">Rating: {review.select}</time>
+                                <div className="chat chat-start">
+                                    <div className="chat-header justify-between">
+                                        {review.user}
+                                        <time className="ml-7 text-sm opacity-50">Rating: {review.select}</time>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="chat-bubble">{review.text}</div>
-                            <div className="chat-footer opacity-50">{review.date.slice(0, 10)}</div>
-                        </div>)
+                                <div className="chat-bubble">{review.text}</div>
+                                <div className="chat-footer opacity-50">{review.date.slice(0, 10)}</div>
+                            </div>)
                     }
                 </div>
             </div>
@@ -70,9 +83,9 @@ const Home = () => {
                 <div className='relative z-30 text-center text-white mx-auto'>
                     <h3 className='font-semibold text-2xl'>Subscribe our Newsletter</h3>
                     <p className='text-gray-400'>Subscribe to our newsletter to stay updated & know the <br /> upcomming offers, deals & updates.</p>
-                    <form className='mt-4'>
+                    <form onSubmit={handleSubmit} className='mt-4'>
                         <div className='relative w-fit mx-auto'>
-                            <input type="text" className='w-96 rounded border bg-transparent py-[0.8rem] px-4 text-sm' placeholder='Your email address' required />
+                            <input type="text" name='email' defaultValue={user?.email} className='w-96 rounded border bg-transparent py-[0.8rem] px-4 text-sm' placeholder='Your email address' required />
                             <button className='btn absolute top-0 right-0 rounded-r rounded-l-none'>Subscribe</button>
                         </div>
                     </form>
