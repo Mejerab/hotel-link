@@ -108,7 +108,7 @@ const Detail = () => {
             <div className="m-5 border-2 p-5 rounded-2xl">
                 <div className="flex justify-between mx-3">
                     <button onClick={() => setOn(!on)} className="text-3xl text-gray-400 font-semibold flex items-center"><FaPlay className={on ? 'rotate-90 transition-transform' : 'rotate-0 transition-transform'} /> Reviews</button>
-                    <span className="text-3xl text-gray-400 font-semibold flex items-center">Overall Rating: {overAll>0 ? overAll.toString().slice(0, 3) : 'No rating'}</span>
+                    <span className="text-3xl text-gray-400 font-semibold flex items-center">Overall Rating: {overAll>0 ? overAll.toString().slice(0, 3) : '0'}</span>
                 </div>
                 <div className={on ? 'block' : 'hidden'}>
                     <div id="container" className="w-full flex flex-col">
