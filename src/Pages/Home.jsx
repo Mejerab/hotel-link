@@ -29,10 +29,10 @@ const Home = () => {
                 <div className='relative z-30 text-center '>
                     <h2 className='text-5xl text-white font-semibold'>Welcome to Hotel Link</h2>
                     <p className='text-gray-500 my-4'>You are welcome to the best hotel services. <br /> We provide the best hotel services all over the world in your budget.</p>
-                    <button className='px-7 btn btn-outline text-white border-white rounded-full'>Explore more <IoMdArrowRoundForward className='text-white text-lg' /></button>
+                    <a href='#rooms' className='px-7 btn btn-outline text-white border-white rounded-full'>Explore more <IoMdArrowRoundForward className='text-white text-lg' /></a>
                 </div>
             </div>
-            <div className='mb-12 z-50 mx-6'>
+            <div id='rooms' className='mb-12 z-50 mx-6'>
                 <h3 className='text-center text-3xl font-semibold mb-3'>Featured Rooms</h3>
                 <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-9 xl:gap-x-16 my-8'>
                     {
