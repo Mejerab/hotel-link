@@ -1,12 +1,15 @@
 import axios from "axios";
 import moment from "moment";
+import { useContext } from "react";
 import { Helmet } from "react-helmet";
 // import moment from "moment";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { useLoaderData } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Aboutus = () => {
+    const {user} = useContext(AuthContext);
     const messages = useLoaderData();
     const handleSubmit = () => {
         const message = document.getElementById('message').value;
@@ -19,7 +22,7 @@ const Aboutus = () => {
                 <time class="text-xs opacity-50">${moment().fromNow()}</time>
             </div>
         `;
-        if (message) {
+        if (message && user) {
             container.appendChild(chat);
             const nothing = { message, time: moment().fromNow() };
             console.log(nothing);

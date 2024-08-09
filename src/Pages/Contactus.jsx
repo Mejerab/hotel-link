@@ -4,13 +4,14 @@ import Swal from "sweetalert2";
 import { FaQuestion } from "react-icons/fa";
 import { Map, Marker } from "pigeon-maps";
 import { Helmet } from "react-helmet";
+import { toast } from "react-toastify";
 
 const Contactus = () => {
     const { user } = useContext(AuthContext);
     const handleSubmit = e => {
         e.preventDefault();
         const message = e.target.message;
-        if (message.value) {
+        if (message.value && user) {
             Swal.fire({
                 title: 'Success!',
                 text: 'Press the button to continue',
@@ -18,6 +19,9 @@ const Contactus = () => {
                 confirmButtonText: 'Continue'
             })
             message.value = '';
+        }
+        else{
+            toast.error('You may login first')
         }
     }
     const [hue, setHue] = useState(0);
@@ -48,7 +52,7 @@ const Contactus = () => {
                                 <label className="label">
                                     <span className="label-text font-medium">Email</span>
                                 </label>
-                                <input type="email" defaultValue={user.email} name="email" placeholder="email" className="input input-bordered" required />
+                                <input type="email" defaultValue={user?.email} name="email" placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
