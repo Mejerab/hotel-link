@@ -23,7 +23,7 @@ const Navbar = () => {
         const password = document.getElementById('passwordd').value;
         createUser(email, password)
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 updateUser(name, photo)
                     .then(() => {
                         console.log('Updated successfully')
@@ -54,7 +54,8 @@ const Navbar = () => {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         login(email, password)
-            .then(result => {console.log(result.user)
+            .then(result => {
+                // console.log(result.user)
                 Swal.fire({
                     title: 'Success',
                     text: 'Press the button to continue',
@@ -73,7 +74,7 @@ const Navbar = () => {
     }
     const handleGoogle = () => {
         googleLogin()
-            .then(result => {console.log(result.user)
+            .then(result => {
                 Swal.fire({
                     title: 'Success',
                     text: 'Press the button to continue',

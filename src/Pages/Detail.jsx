@@ -71,7 +71,6 @@ const Detail = () => {
         }
     }
     const onChange = (date) => {
-        // console.log(date, dateString);
         setDay(date.$D)
         setMonth(date.$M)
         setYear(date.$y)

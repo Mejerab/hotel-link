@@ -25,9 +25,8 @@ const Aboutus = () => {
         if (message && user) {
             container.appendChild(chat);
             const nothing = { message, time: moment().fromNow() };
-            console.log(nothing);
             axios.post('https://hotel-server-site.vercel.app/messages', nothing, { withCredentials: true })
-                .then(data => console.log(data.data))
+                .then(() => console.log('data'))
         }
         else{
             toast.error('Type a message first')

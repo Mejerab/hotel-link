@@ -24,8 +24,8 @@ const MyBookings = () => {
     const handleChange = (_id) => {
         if (day && month && year) {
             axios.put(`https://hotel-server-site.vercel.app/bookings/${_id}`, { day, month, year })
-                .then(res => {
-                    console.log(res.data)
+                .then(() => {
+                    // console.log(res.data)
                     toast.success('Date changed successfully')
                     window.location = window.location.href;
                 })
@@ -38,9 +38,9 @@ const MyBookings = () => {
         // console.log(day, month, year);
 
         const today = moment().format('YYYY-M-D');
-        console.log(today, day, month);
+        // console.log(today, day, month);
         const date = `${year}-${month + 1}-${day - 1}`;
-        console.log(date);
+        // console.log(date);
 
         if (today === date) {
             Swal.fire({
@@ -91,8 +91,8 @@ const MyBookings = () => {
         const nothing = { room_id, select, text, date: moment().toISOString(), user: user?.displayName || user?.email, photo: user?.photoURL };
         if (select !== 'Rating' && text !== '') {
             axios.post('https://hotel-server-site.vercel.app/reviews', nothing)
-                .then((res) => {
-                    console.log('Review done', res.data)
+                .then(() => {
+                    console.log('Review done')
                     toast.success('Review sent')
                 })
 
