@@ -10,3 +10,8 @@
 *Contact Us: Users are able to connect with us by sending us a message or email, phone, facebook, instagram. User can also visit our office.
 
 *Review Mechanism for Hotels: Allow hotels to provide review on user reviews and interactions. This can help maintain a good relationship with hotel partners and improve the accuracy of information.
+
+# Packages:
+           * React Helmet
+           * Animate AOS
+           * React Pigeon Maps
