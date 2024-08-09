@@ -46,8 +46,8 @@ const Rooms = () => {
                     }</span></summary>
                     <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                         <li><button onClick={() => setCondition('mixed')}>Mixed</button></li>
-                        <li><button onClick={() => setCondition('inorder')}>Price Inorder</button></li>
-                        <li><button onClick={() => setCondition('disorder')}>Price Disorder</button></li>
+                        <li><button onClick={() => setCondition('inorder')}>Ascending Price</button></li>
+                        <li><button onClick={() => setCondition('disorder')}>Descending Price</button></li>
                     </ul>
                 </details>
             </div>
