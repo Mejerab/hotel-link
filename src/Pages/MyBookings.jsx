@@ -27,6 +27,7 @@ const MyBookings = () => {
                 .then(res => {
                     console.log(res.data)
                     toast.success('Date changed successfully')
+                    window.location = window.location.href;
                 })
         }
         else {
@@ -114,16 +115,16 @@ const MyBookings = () => {
             <div className={click ? "grid gap-y-7 mt-5 min-h-44" : 'grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-9 mt-8 gap-x-16'}>
                 {
                     bookings.map(booking =>
-                        <div className={click ? 'border rounded-2xl p-4 lg:flex items-center' : 'border rounded-2xl p-4 grid items-cente'} key={booking._id}>
-                            <div className={click ? "lg:w-1/3" : 'lg:w-5/6'}>
+                        <div className={click ? 'border rounded-2xl p-4 lg:flex items-center' : 'border rounded-2xl p-4 grid items-center'} key={booking._id}>
+                            <div className={click ? "lg:w-1/3" : 'lg:w-full'}>
                                 <img className="w-full md:h-[210px]" src={booking.room_image} alt="" />
                             </div>
-                            <div className="lg:w-2/3 lg:ml-5 lg:mt-0 mt-5">
+                            <div className={click ? "lg:w-2/3 lg:ml-5 lg:mt-0 mt-5" : 'w-full mt-4'}>
                                 <h4 className="text-2xl font-bold">{booking.hotel_name}</h4>
                                 <p className="font-medium my-4">Price: ${booking.price_per_night}</p>
                                 <p className="font-medium my-4">Country: {booking.country}</p>
                                 <p className="font-medium my-4">Room Size: {booking.room_size}</p>
-                                <div className="flex items-end justify-end">
+                                <div className={click ? "flex items-end justify-end" : 'grid grid-cols-2 gap-y-4'}>
                                     <DatePicker className="input input-bordered px-7" onChange={onChange} />
                                     <button onClick={() => handleChange(booking._id)} className="btn mx-3 bg-gray-400 text-white px-7">Change Date</button>
                                     <button className="btn bg-white text-gray-400 border-gray-400" onClick={() => document.getElementById(booking.hotel_name).showModal()}>Rate the room</button>
