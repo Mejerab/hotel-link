@@ -6,3 +6,5 @@
 *Interactive Map: Incorporate a map feature that shows hotel locations relative to points of interest, landmarks, or user-defined areas. This helps users visualize hotel proximity and plan their stay more effectively.
 
 *User Accounts and Personalized Experience: Allow users to create accounts where they can save their favorite hotels, track their booking history.
+
+*Contact Us: Users are able to connect with us by sending us a message or email, phone, facebook, instagram. User can also visit our office.
