@@ -43,6 +43,7 @@ const MyBookings = () => {
                 title: "Notice!",
                 text: "Your cannot cancel booking one day before the date.",
                 icon: "error",
+                cancelButtonColor: "#d33",
                 confirmButtonText: "Return"
             });
         }
