@@ -21,7 +21,7 @@ const Detail = () => {
 
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        axios.get(`https://hotel-server-site.vercel.app/reviews`)
+        axios.get(`http://localhost:5000/reviews`)
             .then(res => setReviews(res.data))
     }, [])
     const real = reviews.filter(review => review.room_id === _id);
@@ -49,13 +49,13 @@ const Detail = () => {
             }).then((result) => {
                 const nothing = { availability: 'Unavailable' };
                 if (result.isConfirmed) {
-                    axios.put(`https://hotel-server-site.vercel.app/rooms/${_id}`, nothing, { withCredentials: true })
+                    axios.put(`http://localhost:5000/rooms/${_id}`, nothing, { withCredentials: true })
                         .then(() => {
                             console.log('done')
                             setAble(nothing);
                         }
                         )
-                    axios.post('https://hotel-server-site.vercel.app/bookings', aDetail, { withCredentials: true })
+                    axios.post('http://localhost:5000/bookings', aDetail, { withCredentials: true })
                         .then(() => console.log('done')
                         );
                     Swal.fire({

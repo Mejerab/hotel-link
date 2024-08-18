@@ -15,9 +15,9 @@ const Home = () => {
     const [populars, setPopulars] = useState([]);
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        axios.get('https://hotel-server-site.vercel.app/rooms?page=1&size=6', { withCredentials: true })
+        axios.get('http://localhost:5000/rooms?page=1&size=6', { withCredentials: true })
             .then(res => setPopulars(res.data))
-        axios.get('https://hotel-server-site.vercel.app/reviews')
+        axios.get('http://localhost:5000/reviews')
             .then(res => setReviews(res.data))
     }, [])
     const [hue, setHue] = useState(0);

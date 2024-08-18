@@ -18,12 +18,12 @@ const MyBookings = () => {
 
     const [bookings, setBookings] = useState([]);
     useEffect(() => {
-        axios.get(`https://hotel-server-site.vercel.app/bookings?email=${user?.email}`, { withCredentials: true })
+        axios.get(`http://localhost:5000/bookings?email=${user?.email}`, {withCredentials: true})
             .then(res => setBookings(res.data))
     }, [user])
     const handleChange = (_id) => {
         if (day && month && year) {
-            axios.put(`https://hotel-server-site.vercel.app/bookings/${_id}`, { day, month, year })
+            axios.put(`http://localhost:5000/bookings/${_id}`, { day, month, year })
                 .then(() => {
                     // console.log(res.data)
                     toast.success('Date changed successfully')
@@ -62,10 +62,10 @@ const MyBookings = () => {
                 confirmButtonText: "Yes, delete it!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.put(`https://hotel-server-site.vercel.app/rooms/${room_id}`, { availability: 'Available' }, { withCredentials: true })
+                    axios.put(`http://localhost:5000/rooms/${room_id}`, { availability: 'Available' }, { withCredentials: true })
                         .then(() => console.log('put done')
                         )
-                    axios.delete(`https://hotel-server-site.vercel.app/bookings/${id}`, { withCredentials: true })
+                    axios.delete(`http://localhost:5000/bookings/${id}`, { withCredentials: true })
                         .then(() => {
                             console.log('Delete done')
                         })
@@ -90,7 +90,7 @@ const MyBookings = () => {
         const text = document.getElementById('text').value;
         const nothing = { room_id, select, text, date: moment().toISOString(), user: user?.displayName || user?.email, photo: user?.photoURL };
         if (select !== 'Rating' && text !== '') {
-            axios.post('https://hotel-server-site.vercel.app/reviews', nothing)
+            axios.post('http://localhost:5000/reviews', nothing)
                 .then(() => {
                     console.log('Review done')
                     toast.success('Review sent')
