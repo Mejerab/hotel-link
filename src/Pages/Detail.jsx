@@ -49,13 +49,13 @@ const Detail = () => {
             }).then((result) => {
                 const nothing = { availability: 'Unavailable' };
                 if (result.isConfirmed) {
-                    axios.put(`http://localhost:5000/rooms/${_id}`, nothing, { withCredentials: true })
+                    axios.put(`https://hotel-server-site.vercel.app/rooms/${_id}`, nothing, { withCredentials: true })
                         .then(() => {
                             console.log('done')
                             setAble(nothing);
                         }
                         )
-                    axios.post('http://localhost:5000/bookings', aDetail, { withCredentials: true })
+                    axios.post('https://hotel-server-site.vercel.app/bookings', aDetail, { withCredentials: true })
                         .then(() => console.log('done')
                         );
                     Swal.fire({

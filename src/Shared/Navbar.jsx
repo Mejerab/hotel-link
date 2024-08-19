@@ -102,7 +102,7 @@ const Navbar = () => {
             .catch(error => console.error(error))
     }
     return (
-        <div className="navbar bg-[#00000044] px-3 lg:px-5 relative top-0 z-30 border-b text-white">
+        <div className="navbar bg-[#00000044] w-full px-0 lg:px-5 relative top-0 z-30 border-b text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">

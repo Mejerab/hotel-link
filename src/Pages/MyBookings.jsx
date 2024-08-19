@@ -6,24 +6,21 @@ import { toast, ToastContainer } from "react-toastify";
 import Swal from "sweetalert2";
 import moment from "moment";
 import { Helmet } from "react-helmet";
-import { BiSolidGrid } from "react-icons/bi";
-import { FaBars } from "react-icons/fa";
 
 const MyBookings = () => {
     const { user } = useContext(AuthContext);
-    const [click, setClick] = useState(true)
     const [day, setDay] = useState(null);
     const [month, setMonth] = useState(null);
     const [year, setYear] = useState(null);
 
     const [bookings, setBookings] = useState([]);
     useEffect(() => {
-        axios.get(`http://localhost:5000/bookings?email=${user?.email}`, {withCredentials: true})
+        axios.get(`https://hotel-server-site.vercel.app/bookings?email=${user?.email}`, {withCredentials: true})
             .then(res => setBookings(res.data))
-    }, [user])
+    }, [user]) 
     const handleChange = (_id) => {
         if (day && month && year) {
-            axios.put(`http://localhost:5000/bookings/${_id}`, { day, month, year })
+            axios.put(`https://hotel-server-site.vercel.app/bookings/${_id}`, { day, month, year })
                 .then(() => {
                     // console.log(res.data)
                     toast.success('Date changed successfully')
@@ -62,10 +59,10 @@ const MyBookings = () => {
                 confirmButtonText: "Yes, delete it!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.put(`http://localhost:5000/rooms/${room_id}`, { availability: 'Available' }, { withCredentials: true })
+                    axios.put(`https://hotel-server-site.vercel.app/rooms/${room_id}`, { availability: 'Available' }, { withCredentials: true })
                         .then(() => console.log('put done')
                         )
-                    axios.delete(`http://localhost:5000/bookings/${id}`, { withCredentials: true })
+                    axios.delete(`https://hotel-server-site.vercel.app/bookings/${id}`, { withCredentials: true })
                         .then(() => {
                             console.log('Delete done')
                         })
@@ -90,7 +87,7 @@ const MyBookings = () => {
         const text = document.getElementById('text').value;
         const nothing = { room_id, select, text, date: moment().toISOString(), user: user?.displayName || user?.email, photo: user?.photoURL };
         if (select !== 'Rating' && text !== '') {
-            axios.post('http://localhost:5000/reviews', nothing)
+            axios.post('https://hotel-server-site.vercel.app/reviews', nothing)
                 .then(() => {
                     console.log('Review done')
                     toast.success('Review sent')
@@ -108,23 +105,19 @@ const MyBookings = () => {
                 <title>Hotel Link || My Bookings</title>
             </Helmet>
             <h3 className="text-center text-3xl font-bold mt-12">My Bookings</h3>
-            <div className="lg:flex items-center justify-end hidden">
-                <button onClick={()=>setClick(true)} className="btn btn-ghost text-gray-500 text-2xl"><FaBars /></button>
-                <button onClick={()=>setClick(false)} className="btn btn-ghost text-gray-500 text-3xl"><BiSolidGrid /></button>
-            </div>
-            <div className={click ? "grid gap-y-7 mt-5 min-h-44 lg:mx-3 mx-auto" : 'grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3  lg:mx-3 mx-auto gap-y-9 mt-8 gap-x-16'}>
+            <div className="grid gap-y-7 mt-5 min-h-44 lg:mx-3">
                 {
                     bookings.map(booking =>
-                        <div className={click ? 'border rounded-2xl lg:w-full lg:ml-0 w-[92.5%] p-4 lg:flex items-center' : 'border rounded-2xl  p-4 grid items-center'} key={booking._id}>
-                            <div className={click ? "lg:w-1/3" : 'lg:w-full'}>
-                                <img className="w-full md:h-[210px]" src={booking.room_image} alt="" />
+                        <div className= 'border rounded-2xl xl:mx-0 mx-auto lg:w-full lg:ml-0 w-[95%] lg:p-4 p-2 lg:flex items-center' key={booking._id}>
+                            <div className='lg:w-1/3'>
+                                <img className="w-full md:h-[210px] xl:rounded-none rounded-t-xl" src={booking.room_image} alt="" />
                             </div>
-                            <div className={click ? "lg:w-2/3 lg:ml-5 lg:mt-0 mt-5" : 'w-full mt-4'}>
+                            <div className= "lg:w-2/3 mx-auto w-full lg:ml-5 lg:mt-0 mt-5" >
                                 <h4 className="text-2xl font-bold">{booking.hotel_name}</h4>
                                 <p className="font-medium my-4">Price: ${booking.price_per_night}</p>
                                 <p className="font-medium my-4">Country: {booking.country}</p>
                                 <p className="font-medium my-4">Room Size: {booking.room_size}</p>
-                                <div className={click ? "flex items-end justify-end" : 'grid grid-cols-2 gap-y-4'}>
+                                <div className='grid grid-cols-2 w-full gap-y-4'>
                                     <DatePicker className="input input-bordered px-7" onChange={onChange} />
                                     <button onClick={() => handleChange(booking._id)} className="btn mx-3 bg-gray-400 text-white px-7">Change Date</button>
                                     <button className="btn bg-white text-gray-400 border-gray-400" onClick={() => document.getElementById(booking.hotel_name).showModal()}>Rate the room</button>
@@ -136,8 +129,8 @@ const MyBookings = () => {
                                             <div className="text-center mx-auto">
                                                 <h3 className="text-xl font-semibold">Rate This Room</h3>
                                                 <div className="my-6 mx-12">
-                                                    <select id="select" className="select mb-4 select-bordered  w-full" required>
-                                                        <option selected disabled>Rating</option>
+                                                    <select defaultValue={null} id="select" className="select mb-4 select-bordered  w-full" required>
+                                                        <option defaultValue={null} selected disabled>Rating</option>
                                                         <option value={1}>1</option>
                                                         <option value={2}>2</option>
                                                         <option value={3}>3</option>

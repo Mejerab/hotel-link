@@ -3,12 +3,12 @@ import { FaHotel } from "react-icons/fa";
 const Footer = () => {
     return (
         <>
-            <footer className="footer bg-gray-400 text-white p-5 lg:p-10 mt-12 lg:flex grid grid-cols-2 justify-between">
+            <footer className="footer bg-gray-400 text-white p-5 lg:p-10 mt-12 lg:flex justify-between">
                     <aside className="">
                         <div>
                             <h3 className="btn flex -ml-4 text-white btn-ghost hover:bg-transparent text-2xl"><FaHotel className="text-2xl inline" />Hotel Link</h3>
                         </div>
-                        <p>
+                        <p className="">
                             Hotel Link Ltd.
                             <br />
                             Providing reliable service since 1992
